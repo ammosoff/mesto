@@ -1,4 +1,15 @@
 .page {
   max-width: 880px;
+  margin: 0 auto;
+  padding-top: 45px;
+  padding-bottom: 60px;
+  min-height: 100vh; /* потом убрать */
   background-color: #000000;
+}
+
+@media screen and (max-width: 320px) {
+  .page {
+    padding-top: 28px;
+    padding-bottom: 36px;
+  }
 }
