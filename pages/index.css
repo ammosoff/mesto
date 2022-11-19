@@ -14,7 +14,6 @@
 @import url(../blocks/profile/__button/profile__button.css);
 @import url(../blocks/profile/__button/_action/profile__button_action_edit.css);
 @import url(../blocks/profile/__button/_action/profile__button_action_add.css);
-
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__img/card__img.css);
@@ -22,6 +21,7 @@
 @import url(../blocks/card/__caption/cards__caption.css);
 @import url(../blocks/card/__like/card__like.css);
 @import url(../blocks/card/__like/_active/card__like_active.css);
+@import url(../blocks/footer/copyright/footer__copyright.css);
 /* * {
   outline: 1px solid red;
 } */
