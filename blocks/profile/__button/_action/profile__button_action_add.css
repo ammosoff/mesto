@@ -1,0 +1,25 @@
+.profile__button_action_add {
+  box-sizing: border-box;
+  padding: 0;
+  background-image: url(../../../../images/button-add.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
+  width: 150px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 2px;
+}
+
+@media screen and (max-width: 984px) {
+  .profile__button_action_add {
+    background-size: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__button_action_add {
+    width: 100%;
+    max-width: 282px;
+  }
+}

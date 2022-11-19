@@ -5,9 +5,10 @@
   padding-bottom: 60px;
   min-height: 100vh; /* потом убрать */
   background-color: #000000;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
   .page {
     padding-top: 28px;
     padding-bottom: 36px;
