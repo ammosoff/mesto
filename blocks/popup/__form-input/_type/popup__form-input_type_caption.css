@@ -1,0 +1,9 @@
+.popup__form-input_type_caption {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__form-input_type_caption {
+    margin-bottom: 45px;
+  }
+}

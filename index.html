@@ -18,10 +18,10 @@
         <div class="profile__inner">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__caption">Исследователь океана</p>
-          <button class="profile__button profile__button_action_edit"></button>
+          <button class="profile__button-edit"></button>
         </div>
       </div>
-      <button class="profile__button profile__button_action_add"></button>
+      <button class="profile__button-add"></button>
     </section>
     <section aria-label="Список мест в которых стоит побывать">
       <ul class="cards">
@@ -30,7 +30,7 @@
             <img class="card__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
             <div class="card__inner">
               <h2 class="card__caption">Карачаевск</h2>
-              <button class="card__like"></button>
+              <button class="card__button-like"></button>
             </div>
           </article>
         </li>
@@ -39,7 +39,7 @@
             <img class="card__img" src="./images/elbrus.jpg" alt="Карачаевск">
             <div class="card__inner">
               <h2 class="card__caption">Гора Эльбрус</h2>
-              <button class="card__like"></button>
+              <button class="card__button-like"></button>
             </div>
           </article>
         </li>
@@ -48,7 +48,7 @@
             <img class="card__img" src="./images/dombay.jpg" alt="Карачаевск">
             <div class="card__inner">
               <h2 class="card__caption">Домбай</h2>
-              <button class="card__like"></button>
+              <button class="card__button-like"></button>
             </div>
           </article>
         </li>
@@ -57,23 +57,25 @@
             <img class="card__img" src="./images/oldmanofstorr.jpg" alt="Остров Скай">
             <div class="card__inner">
               <h2 class="card__caption">Остров Скай</h2>
-              <button class="card__like"></button>
+              <button class="card__button-like"></button>
             </div>
           </article>
         </li>
-        <article class="card">
-          <img class="card__img" src="./images/gulfofthailand.jpg" alt="Сиамский залив">
-          <div class="card__inner">
-            <h2 class="card__caption">Сиамский залив</h2>
-            <button class="card__like"></button>
-          </div>
-        </article>
+        <li>
+          <article class="card">
+            <img class="card__img" src="./images/gulfofthailand.jpg" alt="Сиамский залив">
+            <div class="card__inner">
+              <h2 class="card__caption">Сиамский залив</h2>
+              <button class="card__button-like"></button>
+            </div>
+          </article>
+        </li>
         <li>
           <article class="card">
             <img class="card__img" src="./images/georgia.jpg" alt="Грузия">
             <div class="card__inner">
               <h2 class="card__caption">Грузия</h2>
-              <button class="card__like"></button>
+              <button class="card__button-like"></button>
             </div>
           </article>
         </li>
@@ -83,5 +85,19 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
+
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__button-close"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form">
+        <input class="popup__form-input popup__form-input_type_name" type="text">
+        <input class="popup__form-input popup__form-input_type_caption" type="text">
+        <button class="popup__button-save" type='submit'>Сохранить</button>
+      </form> 
+    </div>
+  </section>
+
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
