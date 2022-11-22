@@ -33,7 +33,7 @@ function submitFormPopup(evt) {
   closePopup();
 }
 
-/* Вызов функций */
+/* Обработка событий */
 
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
