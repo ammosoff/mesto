@@ -23,65 +23,25 @@
       </div>
       <button class="profile__button-add"></button>
     </section>
+
     <section aria-label="Список мест в которых стоит побывать">
       <ul class="cards">
-        <li>
-          <article class="card">
-            <img class="card__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
-            <div class="card__inner">
-              <h2 class="card__caption">Карачаевск</h2>
-              <button class="card__button-like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <img class="card__img" src="./images/elbrus.jpg" alt="Карачаевск">
-            <div class="card__inner">
-              <h2 class="card__caption">Гора Эльбрус</h2>
-              <button class="card__button-like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <img class="card__img" src="./images/dombay.jpg" alt="Карачаевск">
-            <div class="card__inner">
-              <h2 class="card__caption">Домбай</h2>
-              <button class="card__button-like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <img class="card__img" src="./images/oldmanofstorr.jpg" alt="Остров Скай">
-            <div class="card__inner">
-              <h2 class="card__caption">Остров Скай</h2>
-              <button class="card__button-like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <img class="card__img" src="./images/gulfofthailand.jpg" alt="Сиамский залив">
-            <div class="card__inner">
-              <h2 class="card__caption">Сиамский залив</h2>
-              <button class="card__button-like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="card">
-            <img class="card__img" src="./images/georgia.jpg" alt="Грузия">
-            <div class="card__inner">
-              <h2 class="card__caption">Грузия</h2>
-              <button class="card__button-like"></button>
-            </div>
-          </article>
-        </li>
+        <template class="card-template">
+          <li>
+            <article class="card">
+              <img class="card__img" src="" alt="">
+              <div class="card__inner">
+                <h2 class="card__caption"></h2>
+                <button class="card__button-like"></button>
+              </div>
+            </article>
+          </li>
+        </template>
       </ul>
     </section>
+
   </main>
+
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
