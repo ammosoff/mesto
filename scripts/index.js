@@ -6,6 +6,48 @@ const popupFormInputNameElement = popupElement.querySelector('.popup__form-input
 const popupFormInputCaptionElement = popupElement.querySelector('.popup__form-input_type_caption');
 const profileNameElement = document.querySelector('.profile__name');
 const profileCaptionElement = document.querySelector('.profile__caption');
+const cardsElement = document.querySelector('.cards');
+const cardTemplateElement = document.querySelector('.card-template');
+
+/* initialCards - массив объектов с информацией для добавления первых 6 карточек на странице  */
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+/* при загрузке страницы добавим карточки из массива initialCards*/
+
+initialCards.forEach(function(card) {
+  const cardElement = cardTemplateElement.content.cloneNode(true);
+  cardElement.querySelector('.card__caption').textContent = card.name;
+  cardElement.querySelector('.card__img').setAttribute('src', card.link);
+  cardElement.querySelector('.card__img').setAttribute('alt', card.name);
+
+  cardsElement.prepend(cardElement);
+})
 
 /* openPopup - функция открытия попапа и получения текстовых значений элементов */
 
