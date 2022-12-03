@@ -60,11 +60,13 @@ function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
 }
 
-/* функция лайка карточки */
+/* handleLikeCard - функция лайка карточки */
 
 function handleLikeCard(evt) {
   evt.target.classList.toggle('card__button-like_active');
 }
+
+/* функция удаления карточки */
 
 
 /* addCard - функция создания новой карточки */
