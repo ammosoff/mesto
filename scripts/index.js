@@ -11,11 +11,13 @@ const profileCaption = document.querySelector('.profile__caption');
 /* элементы формы редактирования профиля */
 const popupFormInputName = popupProfileEdit.querySelector('.popup__form-input_type_name');
 const popupFormInputCaption = popupProfileEdit.querySelector('.popup__form-input_type_caption');
+const popupFormInputTitle = popupCardAdd.querySelector('.popup__form-input_type_title');
+const popupFormInputLink = popupCardAdd.querySelector('.popup__form-input_type_link')
 const popupProfileEditSubmitFormButton = popupProfileEdit.querySelector('.popup__form');
 const popupCardAddSubmitFormButton = popupCardAdd.querySelector('.popup__form');
 /* элементы для добавления новой карточки */
 const cardsContainer = document.querySelector('.cards');
-const cardTemplate = document.querySelector('.card-template').content;
+const cardTemplate = document.querySelector('#card-template').content;
 
 /* initialCards - массив объектов с информацией для добавления первых 6 карточек на странице  */
 
@@ -47,17 +49,28 @@ const initialCards = [
 ];
 
 
-/* добавление карточки */
+/* добавление новой карточки */
+
+function addCard(dataCard) {
+  const newCard = cardTemplate.cloneNode(true);
+
+  const nameCard = newCard.querySelector('.card__caption');
+  const imgCard = newCard.querySelector('.card__img');
+  nameCard.textContent = dataCard.name;
+  imgCard.src = dataCard.link;
+
+  return newCard;
+}
 
 
 /* функция renderCard добавляет новую карточку в верстку */
 function renderCard (dataCard) {
-  const cardElement = cardTemplate.cloneNode(true);
+/*   const cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector('.card__img').src = dataCard.link;
-  cardElement.querySelector('.card__caption').textContent = dataCard.name;
+  cardElement.querySelector('.card__caption').textContent = dataCard.name; */
 
   
-  cardsContainer.prepend(cardElement);
+  cardsContainer.prepend(addCard(dataCard));
 }
 
 /* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
@@ -65,14 +78,6 @@ function renderCard (dataCard) {
 initialCards.forEach(function(dataCard) {
   renderCard(dataCard);
 })
-
-/* функция добавления новой карточки */
-function createElement(item) {
-
-}
-
-
-
 
 
 /* openPopup - функция открытия попапа и получения текстовых значений элементов */
@@ -105,8 +110,13 @@ function submitFormPopupEditProfile(evt) {
 
 function submitFormPopupCardAdd(evt) {
   evt.preventDefault();
+  initialCards.name = popupFormInputTitle.value;
+  initialCards.link = popupFormInputLink.value;
 
+  renderCard(initialCards);
   closePopup(popupCardAdd);
+  popupFormInputTitle.value = '';
+  popupFormInputLink.value = '';
 }
 
 
