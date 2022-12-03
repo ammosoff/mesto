@@ -1,11 +1,31 @@
-const popupElement = document.querySelector('.popup');
-const popupCloseButtonElement = popupElement.querySelector('.popup__button-close');
-const popupOpenButtonElement = document.querySelector('.profile__button-edit');
-const popupSubmitFormButtonElement = popupElement.querySelector('.popup__form');
-const popupFormInputNameElement = popupElement.querySelector('.popup__form-input_type_name');
-const popupFormInputCaptionElement = popupElement.querySelector('.popup__form-input_type_caption');
-const profileNameElement = document.querySelector('.profile__name');
-const profileCaptionElement = document.querySelector('.profile__caption');
+/* попапы */
+const popupProfileEdit = document.querySelector('.popup_type_edit-profile');
+const popupCardAdd = document.querySelector('.popup_type_add-card');
+
+/* открытие попапов */
+
+const popupProfileEditOpenButton = document.querySelector('.profile__button-edit');
+const popupCardAddOpenButton = document.querySelector('.profile__button-add');
+
+
+/* закрытие попапов */
+
+const popupProfileEditCloseButton = popupProfileEdit.querySelector('.popup__button-close');
+const popupCardAddCloseButton = popupCardAdd.querySelector('.popup__button-close');
+
+/* данные из profile */
+
+const profileName = document.querySelector('.profile__name');
+const profileCaption = document.querySelector('.profile__caption');
+
+/* элементы формы редактирования профиля */
+
+const popupFormInputName = popupProfileEdit.querySelector('.popup__form-input_type_name');
+const popupFormInputCaption = popupProfileEdit.querySelector('.popup__form-input_type_caption');
+const popupProfileEditSubmitFormButton = popupProfileEdit.querySelector('.popup__form');
+const popupCardAddSubmitFormButton = popupCardAdd.querySelector('.popup__form');
+
+
 const cardsElement = document.querySelector('.cards');
 const cardTemplateElement = document.querySelector('.card-template');
 
@@ -51,35 +71,64 @@ initialCards.forEach(function(card) {
 
 /* openPopup - функция открытия попапа и получения текстовых значений элементов */
 
-function openPopup() { 
-  popupElement.classList.add('popup_is-opened');
-  popupFormInputNameElement.value = profileNameElement.textContent;
-  popupFormInputCaptionElement.value = profileCaptionElement.textContent;
+function openPopup(popup) { 
+  popup.classList.add('popup_is-opened');
 }
 
 /* closePopup - функция закрытия попапа */
 
-function closePopup() {
-  popupElement.classList.remove('popup_is-opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_is-opened');
 }
 
 /* submitFormPopup - функция отправки формы без перезагрузки страницы
 так же функция позволяет изменить текстовое содержимое указанных элементов */
 
-function submitFormPopup(evt) {
+/* Обработка сабмита формы редактирования профиля */
+
+function submitFormPopupEditProfile(evt) {
   evt.preventDefault();
 
-  profileNameElement.textContent = popupFormInputNameElement.value;
-  profileCaptionElement.textContent = popupFormInputCaptionElement.value;
+  profileName.textContent = popupFormInputName.value;
+  profileCaption.textContent = popupFormInputCaption.value;
 
-  closePopup();
+  closePopup(popupProfileEdit);
 }
+
+/* Обработка сабмита формы добавления карточки */
+
+function submitFormPopupCardAdd(evt) {
+  evt.preventDefault();
+
+  closePopup(popupCardAdd);
+}
+
 
 /* Обработка событий */
 
-popupOpenButtonElement.addEventListener('click', openPopup);
-popupCloseButtonElement.addEventListener('click', closePopup);
-popupSubmitFormButtonElement.addEventListener('submit', submitFormPopup);
+popupProfileEditOpenButton.addEventListener('click', function () {
+  popupFormInputName.value = profileName.textContent;
+  popupFormInputCaption.value = profileCaption.textContent;
+  openPopup(popupProfileEdit);
+});
+
+popupCardAddOpenButton.addEventListener('click', function () {
+    openPopup(popupCardAdd);
+  });
+  
+
+popupProfileEditCloseButton.addEventListener('click', function () {
+  closePopup(popupProfileEdit);
+});
+
+popupCardAddCloseButton.addEventListener('click', function () {
+  closePopup(popupCardAdd);
+});
+
+
+
+popupProfileEditSubmitFormButton.addEventListener('submit', submitFormPopupEditProfile);
+popupCardAddSubmitFormButton.addEventListener('submit', submitFormPopupCardAdd);
 
 
 
