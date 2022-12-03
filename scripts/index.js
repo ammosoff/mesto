@@ -48,39 +48,7 @@ const initialCards = [
   }
 ];
 
-
-/* добавление новой карточки */
-
-function addCard(dataCard) {
-  const newCard = cardTemplate.cloneNode(true);
-
-  const nameCard = newCard.querySelector('.card__caption');
-  const imgCard = newCard.querySelector('.card__img');
-  nameCard.textContent = dataCard.name;
-  imgCard.src = dataCard.link;
-
-  return newCard;
-}
-
-
-/* функция renderCard добавляет новую карточку в верстку */
-function renderCard (dataCard) {
-/*   const cardElement = cardTemplate.cloneNode(true);
-  cardElement.querySelector('.card__img').src = dataCard.link;
-  cardElement.querySelector('.card__caption').textContent = dataCard.name; */
-
-  
-  cardsContainer.prepend(addCard(dataCard));
-}
-
-/* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
-
-initialCards.forEach(function(dataCard) {
-  renderCard(dataCard);
-})
-
-
-/* openPopup - функция открытия попапа и получения текстовых значений элементов */
+/* openPopup - функция открытия попапа */
 
 function openPopup(popup) { 
   popup.classList.add('popup_is-opened');
@@ -92,8 +60,41 @@ function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
 }
 
-/* submitFormPopup - функция отправки формы без перезагрузки страницы
-так же функция позволяет изменить текстовое содержимое указанных элементов */
+/* функция лайка карточки */
+
+function handleLikeCard(evt) {
+  evt.target.classList.toggle('card__button-like_active');
+}
+
+
+/* addCard - функция создания новой карточки */
+
+function addCard(dataCard) {
+  const newCard = cardTemplate.cloneNode(true);
+
+  const nameCard = newCard.querySelector('.card__caption');
+  const imgCard = newCard.querySelector('.card__img');
+  nameCard.textContent = dataCard.name;
+  imgCard.src = dataCard.link;
+
+  const cardleLikeButton = newCard.querySelector('.card__button-like');
+  cardleLikeButton.addEventListener('click', handleLikeCard)
+
+  return newCard;
+}
+
+
+/* renderCard - функция добавляет новую карточку в верстку */
+function renderCard (dataCard) {
+  cardsContainer.prepend(addCard(dataCard));
+}
+
+/* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
+
+initialCards.forEach(function(dataCard) {
+  renderCard(dataCard);
+})
+
 
 /* Обработка сабмита формы редактирования профиля */
 
@@ -140,8 +141,6 @@ popupProfileEditCloseButton.addEventListener('click', function () {
 popupCardAddCloseButton.addEventListener('click', function () {
   closePopup(popupCardAdd);
 });
-
-
 
 popupProfileEditSubmitFormButton.addEventListener('submit', submitFormPopupEditProfile);
 popupCardAddSubmitFormButton.addEventListener('submit', submitFormPopupCardAdd);
