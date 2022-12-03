@@ -68,6 +68,10 @@ function handleLikeCard(evt) {
 
 /* функция удаления карточки */
 
+function handleDeleteCard(evt) {
+  evt.target.closest('.card').remove();
+}
+
 
 /* addCard - функция создания новой карточки */
 
@@ -80,7 +84,10 @@ function addCard(dataCard) {
   imgCard.src = dataCard.link;
 
   const cardleLikeButton = newCard.querySelector('.card__button-like');
-  cardleLikeButton.addEventListener('click', handleLikeCard)
+  cardleLikeButton.addEventListener('click', handleLikeCard);
+
+  const cardDeleteButton = newCard.querySelector('.card__button-delete');
+  cardDeleteButton.addEventListener('click', handleDeleteCard);
 
   return newCard;
 }
