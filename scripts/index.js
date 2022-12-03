@@ -1,33 +1,21 @@
 /* попапы */
 const popupProfileEdit = document.querySelector('.popup_type_edit-profile');
 const popupCardAdd = document.querySelector('.popup_type_add-card');
-
-/* открытие попапов */
-
 const popupProfileEditOpenButton = document.querySelector('.profile__button-edit');
 const popupCardAddOpenButton = document.querySelector('.profile__button-add');
-
-
-/* закрытие попапов */
-
 const popupProfileEditCloseButton = popupProfileEdit.querySelector('.popup__button-close');
 const popupCardAddCloseButton = popupCardAdd.querySelector('.popup__button-close');
-
 /* данные из profile */
-
 const profileName = document.querySelector('.profile__name');
 const profileCaption = document.querySelector('.profile__caption');
-
 /* элементы формы редактирования профиля */
-
 const popupFormInputName = popupProfileEdit.querySelector('.popup__form-input_type_name');
 const popupFormInputCaption = popupProfileEdit.querySelector('.popup__form-input_type_caption');
 const popupProfileEditSubmitFormButton = popupProfileEdit.querySelector('.popup__form');
 const popupCardAddSubmitFormButton = popupCardAdd.querySelector('.popup__form');
-
-
-const cardsElement = document.querySelector('.cards');
-const cardTemplateElement = document.querySelector('.card-template');
+/* элементы для добавления новой карточки */
+const cardsContainer = document.querySelector('.cards');
+const cardTemplate = document.querySelector('.card-template').content;
 
 /* initialCards - массив объектов с информацией для добавления первых 6 карточек на странице  */
 
@@ -58,16 +46,34 @@ const initialCards = [
   }
 ];
 
-/* при загрузке страницы добавим карточки из массива initialCards*/
 
-initialCards.forEach(function(card) {
-  const cardElement = cardTemplateElement.content.cloneNode(true);
-  cardElement.querySelector('.card__caption').textContent = card.name;
-  cardElement.querySelector('.card__img').setAttribute('src', card.link);
-  cardElement.querySelector('.card__img').setAttribute('alt', card.name);
+/* добавление карточки */
 
-  cardsElement.prepend(cardElement);
+
+/* функция renderCard добавляет новую карточку в верстку */
+function renderCard (dataCard) {
+  const cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector('.card__img').src = dataCard.link;
+  cardElement.querySelector('.card__caption').textContent = dataCard.name;
+
+  
+  cardsContainer.prepend(cardElement);
+}
+
+/* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
+
+initialCards.forEach(function(dataCard) {
+  renderCard(dataCard);
 })
+
+/* функция добавления новой карточки */
+function createElement(item) {
+
+}
+
+
+
+
 
 /* openPopup - функция открытия попапа и получения текстовых значений элементов */
 
