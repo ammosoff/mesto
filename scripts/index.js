@@ -12,8 +12,6 @@ const popupViewPicture = document.querySelector('.popup_type_view-picture');
 /* элементы открытия попапов */
 const popupProfileEditOpenButton = document.querySelector('.profile__button-edit');
 const popupCardAddOpenButton = document.querySelector('.profile__button-add');
-const popupViewPictureImg = popupViewPicture.querySelector('.popup__img');  /* попап с картинкой открывается приклике на картинку */
-const popupViewPictureCaption = popupViewPicture.querySelector('.popup__caption'); /* элемент подписи к картинке */
 
 /* элементы закрытия попапов */
 const popupProfileEditCloseButton = popupProfileEdit.querySelector('.popup__button-close');
@@ -28,7 +26,11 @@ const popupCardAddSubmitFormButton = popupCardAdd.querySelector('.popup__form');
 const popupFormInputName = popupProfileEdit.querySelector('.popup__form-input_type_name');
 const popupFormInputCaption = popupProfileEdit.querySelector('.popup__form-input_type_caption');
 const popupFormInputTitle = popupCardAdd.querySelector('.popup__form-input_type_title');
-const popupFormInputLink = popupCardAdd.querySelector('.popup__form-input_type_link')
+const popupFormInputLink = popupCardAdd.querySelector('.popup__form-input_type_link');
+
+/* элементы попапа с картинкой */
+const popupViewPictureImg = popupViewPicture.querySelector('.popup__img');
+const popupViewPictureCaption = popupViewPicture.querySelector('.popup__caption');
 
 /* элементы из блока profile */
 const profileName = document.querySelector('.profile__name');
