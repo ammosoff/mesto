@@ -88,7 +88,7 @@ function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
 }
 
-/* handleViewCard - функция принимает назавние картинки и ссылку вызывает функцию открытия попапа */
+/* handleViewCard - функция открытия попапа с картинкой */
 
 function handleViewCard(dataCard) {
   popupViewPictureImg.src = dataCard.link;
@@ -136,9 +136,9 @@ function renderCard (dataCard) {
   cardsContainer.prepend(createCard(dataCard));
 }
 
-/* submitFormPopupEditProfile - функция получает данные формы редактирования профиля, отображает их в верстке и закрывает попап*/
+/* handleFormSubmitEditProfile - функция получает данные формы редактирования профиля, отображает их в верстке и закрывает попап*/
 
-function submitFormPopupEditProfile(evt) {
+function handleFormSubmitEditProfile(evt) {
   evt.preventDefault();
 
   profileName.textContent = popupFormInputName.value;
@@ -147,10 +147,10 @@ function submitFormPopupEditProfile(evt) {
   closePopup(popupProfileEdit);
 }
 
-/* submitFormPopupCardAdd - функция получает данные формы добавления новой карточки, передает их функции добавления карточки 
+/* handleFormSubmitCardAdd - функция получает данные формы добавления новой карточки, передает их функции добавления карточки 
 и закрывает попап. В конце очищает поля формы чтобы они не отображались при следующем открытии формы */
 
-function submitFormPopupCardAdd(evt) {
+function handleFormSubmitCardAdd(evt) {
   evt.preventDefault();
   initialCards.name = popupFormInputTitle.value;
   initialCards.link = popupFormInputLink.value;
@@ -163,7 +163,7 @@ function submitFormPopupCardAdd(evt) {
 
 /* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
 
-initialCards.forEach(function(dataCard) {
+initialCards.forEach((dataCard) => {
   renderCard(dataCard);
 })
 
@@ -176,37 +176,37 @@ initialCards.forEach(function(dataCard) {
 
 
 /* при клике на кнопку редактирования профиля получаем в поля формы свойства textConten указанных элементов и вызываем функцию открытия попапа */
-popupProfileEditOpenButton.addEventListener('click', function () { 
+popupProfileEditOpenButton.addEventListener('click', () => { 
   popupFormInputName.value = profileName.textContent;
   popupFormInputCaption.value = profileCaption.textContent;
   openPopup(popupProfileEdit);
 });
 
 /* при клике на кнопку добавления новой карточки вызываем функцию открытия попапа */
-popupCardAddOpenButton.addEventListener('click', function () {
+popupCardAddOpenButton.addEventListener('click', () => {
     openPopup(popupCardAdd);
   });
   
 /* закрываем попап редактирования профиля */
-popupProfileEditCloseButton.addEventListener('click', function () {
+popupProfileEditCloseButton.addEventListener('click', () => {
   closePopup(popupProfileEdit);
 });
 
 /* закрываем попап добавления новой карточки */
-popupCardAddCloseButton.addEventListener('click', function () {
+popupCardAddCloseButton.addEventListener('click', () => {
   closePopup(popupCardAdd);
 });
 
 /* закрываем попап просмотра изображения */
-popupViewPictureCloseButton.addEventListener('click', function () {
+popupViewPictureCloseButton.addEventListener('click', () => {
   closePopup(popupViewPicture);
 });
 
 /* обрабатываем событие отправки формы редактирования профиля*/
-popupProfileEditSubmitFormButton.addEventListener('submit', submitFormPopupEditProfile);
+popupProfileEditSubmitFormButton.addEventListener('submit', handleFormSubmitEditProfile);
 
 /* обрабатываем событие отправки формы добавления карточки */
-popupCardAddSubmitFormButton.addEventListener('submit', submitFormPopupCardAdd);
+popupCardAddSubmitFormButton.addEventListener('submit', handleFormSubmitCardAdd);
 
 
 
