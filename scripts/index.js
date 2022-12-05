@@ -88,12 +88,12 @@ function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
 }
 
-/* handleViewCard - функция получает данные картинки по которой кликнули и вызывает функцию открытия попапа */
+/* handleViewCard - функция принимает назавние картинки и ссылку вызывает функцию открытия попапа */
 
-function handleViewCard(evt) {
-  popupViewPictureImg.src = evt.target.src;
-  popupViewPictureImg.alt = evt.target.alt;
-  popupViewPictureCaption.textContent = evt.target.alt;
+function handleViewCard(dataCard) {
+  popupViewPictureImg.src = dataCard.link;
+  popupViewPictureImg.alt = dataCard.name;
+  popupViewPictureCaption.textContent = dataCard.name;
   openPopup(popupViewPicture);
 }
 
@@ -125,7 +125,7 @@ function createCard(dataCard) {
   const cardDeleteButton = newCard.querySelector('.card__button-delete');
   cardDeleteButton.addEventListener('click', handleDeleteCard);
 
-  imgCard.addEventListener('click', handleViewCard);
+  imgCard.addEventListener('click', () => handleViewCard(dataCard));
 
   return newCard;
 }
