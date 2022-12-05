@@ -92,8 +92,8 @@ function closePopup(popup) {
 
 function handleViewCard(evt) {
   popupViewPictureImg.src = evt.target.src;
-  popupViewPictureImg.alt = evt.target.closest('.card').querySelector('.card__caption').textContent;
-  popupViewPictureCaption.textContent = evt.target.closest('.card').querySelector('.card__caption').textContent;
+  popupViewPictureImg.alt = evt.target.alt;
+  popupViewPictureCaption.textContent = evt.target.alt;
   openPopup(popupViewPicture);
 }
 
