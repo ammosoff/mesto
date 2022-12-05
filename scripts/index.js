@@ -19,8 +19,8 @@ const popupCardAddCloseButton = popupCardAdd.querySelector('.popup__button-close
 const popupViewPictureCloseButton = popupViewPicture.querySelector('.popup__button-close');
 
 /* элементы форм попапов */
-const popupProfileEditSubmitFormButton = popupProfileEdit.querySelector('.popup__form');
-const popupCardAddSubmitFormButton = popupCardAdd.querySelector('.popup__form');
+const popupProfileEditSubmitForm = popupProfileEdit.querySelector('.popup__form');
+const popupCardAddSubmitForm = popupCardAdd.querySelector('.popup__form');
 
 /* элементы инпутов форм попапов */
 const popupFormInputName = popupProfileEdit.querySelector('.popup__form-input_type_name');
@@ -136,7 +136,7 @@ function renderCard (dataCard) {
   cardsContainer.prepend(createCard(dataCard));
 }
 
-/* handleFormSubmitEditProfile - функция получает данные формы редактирования профиля, отображает их в верстке и закрывает попап*/
+/* handleFormSubmitEditProfile - в этой функции получаем данные формы редактирования профиля, отображаем их в верстке и закрываем попап*/
 
 function handleFormSubmitEditProfile(evt) {
   evt.preventDefault();
@@ -147,18 +147,18 @@ function handleFormSubmitEditProfile(evt) {
   closePopup(popupProfileEdit);
 }
 
-/* handleFormSubmitCardAdd - функция получает данные формы добавления новой карточки, передает их функции добавления карточки 
-и закрывает попап. В конце очищает поля формы чтобы они не отображались при следующем открытии формы */
+/* handleFormSubmitCardAdd - в этой функции получаем данные формы добавления новой карточки, передаем их функции добавления карточки 
+и закрываем попап. В конце очищаем поля формы чтобы они не отображались при следующем открытии формы */
 
 function handleFormSubmitCardAdd(evt) {
+  debugger;
   evt.preventDefault();
   initialCards.name = popupFormInputTitle.value;
   initialCards.link = popupFormInputLink.value;
 
   renderCard(initialCards);
   closePopup(popupCardAdd);
-  popupFormInputTitle.value = '';
-  popupFormInputLink.value = '';
+  evt.target.reset(); // очищаем форму
 }
 
 /* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
@@ -203,10 +203,10 @@ popupViewPictureCloseButton.addEventListener('click', () => {
 });
 
 /* обрабатываем событие отправки формы редактирования профиля*/
-popupProfileEditSubmitFormButton.addEventListener('submit', handleFormSubmitEditProfile);
+popupProfileEditSubmitForm.addEventListener('submit', handleFormSubmitEditProfile);
 
 /* обрабатываем событие отправки формы добавления карточки */
-popupCardAddSubmitFormButton.addEventListener('submit', handleFormSubmitCardAdd);
+popupCardAddSubmitForm.addEventListener('submit', handleFormSubmitCardAdd);
 
 
 
