@@ -16,11 +16,11 @@ const popupCardAddOpenButton = document.querySelector('.profile__button-add');
 /* элементы закрытия попапов */
 const popupCloseButton = document.querySelectorAll('.popup__button-close');
 
-/* элементы форм попапов */
-const popupProfileEditSubmitForm = popupProfileEdit.querySelector('.popup__form');
-const popupCardAddSubmitForm = popupCardAdd.querySelector('.popup__form');
+/* элементы форм */
+const popupProfileEditForm = document.forms["profile-form"];
+const popupCardAddForm = document.forms["card-form"];
 
-/* элементы инпутов форм попапов */
+/* элементы инпутов форм  */
 const popupFormInputName = popupProfileEdit.querySelector('.popup__form-input_type_name');
 const popupFormInputCaption = popupProfileEdit.querySelector('.popup__form-input_type_caption');
 const popupFormInputTitle = popupCardAdd.querySelector('.popup__form-input_type_title');
@@ -193,10 +193,10 @@ popupCloseButton.forEach((button) => {
 });
 
 /* обрабатываем событие отправки формы редактирования профиля*/
-popupProfileEditSubmitForm.addEventListener('submit', handleFormSubmitEditProfile);
+popupProfileEditForm.addEventListener('submit', handleFormSubmitEditProfile);
 
 /* обрабатываем событие отправки формы добавления карточки */
-popupCardAddSubmitForm.addEventListener('submit', handleFormSubmitCardAdd);
+popupCardAddForm.addEventListener('submit', handleFormSubmitCardAdd);
 
 
 
