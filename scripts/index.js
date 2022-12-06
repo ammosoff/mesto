@@ -94,6 +94,7 @@ function handleViewCard(dataCard) {
   popupViewPictureImg.src = dataCard.link;
   popupViewPictureImg.alt = dataCard.name;
   popupViewPictureCaption.textContent = dataCard.name;
+
   openPopup(popupViewPicture);
 }
 
@@ -151,21 +152,20 @@ function handleFormSubmitEditProfile(evt) {
 и закрываем попап. В конце очищаем поля формы чтобы они не отображались при следующем открытии формы */
 
 function handleFormSubmitCardAdd(evt) {
-  debugger;
   evt.preventDefault();
+
   initialCards.name = popupFormInputTitle.value;
   initialCards.link = popupFormInputLink.value;
 
   renderCard(initialCards);
   closePopup(popupCardAdd);
+
   evt.target.reset(); // очищаем форму
 }
 
 /* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
 
-initialCards.forEach((dataCard) => {
-  renderCard(dataCard);
-})
+initialCards.forEach(renderCard);
 
 
 
