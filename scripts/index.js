@@ -20,12 +20,10 @@ const popupSaveButton = document.querySelector('.popup__button-save_type_add-car
 /* элементы форм */
 const popupProfileEditForm = document.forms["profile-form"];
 const popupCardAddForm = document.forms["card-form"];
-
-/* элементы инпутов форм  */
-const popupFormInputName = popupProfileEdit.querySelector('.popup__form-input_type_name');
-const popupFormInputCaption = popupProfileEdit.querySelector('.popup__form-input_type_caption');
-const popupFormInputTitle = popupCardAdd.querySelector('.popup__form-input_type_title');
-const popupFormInputLink = popupCardAdd.querySelector('.popup__form-input_type_link');
+const popupFormInputName = popupProfileEditForm.elements.name;
+const popupFormInputCaption = popupProfileEditForm.elements.caption;
+const popupFormInputTitle = popupCardAddForm.elements.title;
+const popupFormInputLink = popupCardAddForm.elements.link;
 
 /* элементы попапа с картинкой */
 const popupViewPictureImg = popupViewPicture.querySelector('.popup__img');
