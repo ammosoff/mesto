@@ -64,8 +64,10 @@
       <button class="popup__button-close" type="button" aria-label="Закрыть форму"></button>
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form" name="card-form" novalidate>
-        <input class="popup__form-input popup__form-input_type_title" type="text" name="title" placeholder="Название" minlength="2" maxlength="30" required>
-        <input class="popup__form-input popup__form-input_type_link" type="url" name="link" placeholder="Ссылка на картинку" required>
+        <input id="title-input" class="popup__form-input popup__form-input_type_title" type="text" name="title" placeholder="Название" minlength="2" maxlength="30" required>
+        <span class="popup__form-input-error title-input-error"></span>
+        <input id="link-input" class="popup__form-input popup__form-input_type_link" type="url" name="link" placeholder="Ссылка на картинку" required>
+        <span class="popup__form-input-error link-input-error"></span>
         <button class="popup__button-save" type='submit'>Создать</button>
       </form> 
     </div>

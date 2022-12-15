@@ -1,8 +1,3 @@
-const form = document.querySelector('.popup__form');
-const formInput = form.querySelector('.popup__form-input');
-const formError = form.querySelector(`.${formInput.id}-error`);
-
-
 /* показывает элемент ошибки */
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -35,16 +30,21 @@ const setEventListeners = (formElement) => {
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement);
-    })
-  })
+    });
+  });
+};
+
+/* Добавление обработчиков всем формам. Находим все формы в DOM и вызываем для них функцию setEventListeners */
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll('.popup__form'));
+
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+    });
+  
+      setEventListeners(formElement);
+  });
 }
 
-setEventListeners(form);
-
-form.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-});
-
-formInput.addEventListener('input', function () {
-  checkInputValidity(form, formInput);
-});
+enableValidation();
