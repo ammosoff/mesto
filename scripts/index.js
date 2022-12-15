@@ -82,6 +82,7 @@ const initialCards = [
 function openPopup(popup) { 
   popup.classList.add('popup_is-opened');
   document.addEventListener('keydown', closePopupByClickOnEsc);
+  popup.addEventListener('click', closePopupByClickOnOverlay);
 }
 
 /* closePopup - функция закрытия попапа */
@@ -89,6 +90,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
   document.removeEventListener('keydown', closePopupByClickOnEsc);
+  popup.removeEventListener('click', closePopupByClickOnOverlay);
 }
 
 /* handleViewCard - функция открытия попапа с картинкой */
@@ -162,6 +164,13 @@ function disableSaveButton (buttonElement) {
 /*  */
 function closePopupByClickOnEsc(evt) {
   if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_is-opened');
+    closePopup(popup);
+  } 
+}
+
+function closePopupByClickOnOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
     const popup = document.querySelector('.popup_is-opened');
     closePopup(popup);
   } 
