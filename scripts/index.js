@@ -5,8 +5,6 @@ const cardsContainer = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#card-template').content;
 
 /* попапы */
-/* const popup = document.querySelectorAll('.popup');
-console.log(popup) */
 const popupProfileEdit = document.querySelector('.popup_type_edit-profile');
 const popupCardAdd = document.querySelector('.popup_type_add-card');
 const popupViewPicture = document.querySelector('.popup_type_view-picture');
@@ -79,7 +77,7 @@ const initialCards = [
 
 /* openPopup - функция открытия попапа */
 
-function openPopup(popup) { 
+const openPopup = (popup) => { 
   popup.classList.add('popup_is-opened');
   document.addEventListener('keydown', closePopupByClickOnEsc);
   popup.addEventListener('click', closePopupByClickOnOverlay);
@@ -87,15 +85,15 @@ function openPopup(popup) {
 
 /* closePopup - функция закрытия попапа */
 
-function closePopup(popup) {
+const closePopup = (popup) => {
   popup.classList.remove('popup_is-opened');
-  document.removeEventListener('keydown', closePopupByClickOnEsc);
-  popup.removeEventListener('click', closePopupByClickOnOverlay);
+/*   document.removeEventListener('keydown', closePopupByClickOnEsc);
+  popup.removeEventListener('click', closePopupByClickOnOverlay); */
 }
 
 /* handleViewCard - функция открытия попапа с картинкой */
 
-function handleViewCard(dataCard) {
+const handleViewCard = (dataCard) => {
   popupViewPictureImg.src = dataCard.link;
   popupViewPictureImg.alt = dataCard.name;
   popupViewPictureCaption.textContent = dataCard.name;
@@ -105,19 +103,19 @@ function handleViewCard(dataCard) {
 
 /* handleLikeCard - функция лайка карточки */
 
-function handleLikeCard(evt) {
+const handleLikeCard = (evt) => {
   evt.target.classList.toggle('card__button-like_active');
 }
 
 /* handleDeleteCard - функция удаления карточки */
 
-function handleDeleteCard(evt) {
+const handleDeleteCard = (evt) => {
   evt.target.closest('.card').remove();
 }
 
 /* createCard - функция создания новой карточки */
 
-function createCard(dataCard) {
+const createCard = (dataCard) => {
   const newCard = cardTemplate.cloneNode(true);
   const nameCard = newCard.querySelector('.card__caption');
   const imgCard = newCard.querySelector('.card__img');
@@ -138,13 +136,13 @@ function createCard(dataCard) {
 
 /* renderCard - функция добавляет карточку в верстку */
 
-function renderCard(dataCard) {
+const renderCard = (dataCard) => {
   cardsContainer.prepend(createCard(dataCard));
 }
 
 /* handleFormSubmitEditProfile - в этой функции получаем данные формы редактирования профиля, отображаем их в верстке и закрываем попап*/
 
-function handleFormSubmitEditProfile(evt) {
+const handleFormSubmitEditProfile = (evt) => {
   evt.preventDefault();
 
   profileName.textContent = popupFormInputName.value;
@@ -156,27 +154,27 @@ function handleFormSubmitEditProfile(evt) {
 /* handleFormSubmitCardAdd - в этой функции получаем данные формы добавления новой карточки, передаем их функции добавления карточки 
 и закрываем попап. В конце очищаем поля формы чтобы они не отображались при следующем открытии формы */
 
-function disableSaveButton (buttonElement) {
+const disableSaveButton = (buttonElement) => {
   buttonElement.classList.add('popup__button-save_disabled');
   buttonElement.disabled = true;
 }
 
 /*  */
-function closePopupByClickOnEsc(evt) {
+const closePopupByClickOnEsc = (evt) => {
   if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_is-opened');
     closePopup(popup);
   } 
 }
 
-function closePopupByClickOnOverlay(evt) {
+const closePopupByClickOnOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
     const popup = document.querySelector('.popup_is-opened');
     closePopup(popup);
   } 
 }
 
-function handleFormSubmitCardAdd(evt) {
+const handleFormSubmitCardAdd = (evt) => {
   evt.preventDefault();
 
   initialCards.name = popupFormInputTitle.value;
