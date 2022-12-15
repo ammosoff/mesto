@@ -69,4 +69,13 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 }
 
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__form-input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_disabled',
+  inputErrorClass: 'popup__form-input_type_error',
+  errorClass: 'popup__form-input-error_active' 
+}
+
 enableValidation();
