@@ -1,35 +1,50 @@
-const formElement = document.querySelector('.popup__form');
-const formInput = formElement.querySelector('.popup__form-input');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+const form = document.querySelector('.popup__form');
+const formInput = form.querySelector('.popup__form-input');
+const formError = form.querySelector(`.${formInput.id}-error`);
 
 
 /* показывает элемент ошибки */
-const showInputError = (input, errorMessage) => {
-  input.classList.add('popup__form-input_type_error');
-  formError.textContent = errorMessage;
-  formError.classList.add('popup__form-input-error_active');
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add('popup__form-input_type_error');
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add('popup__form-input-error_active');
 };
 
 /* скрывает элемент ошибки */
-const hideInputError = (input) => {
-  input.classList.remove('popup__form-input_type_error');
-  formError.classList.remove('popup__form-input-error_active');
-  formError.textContent = '';
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove('popup__form-input_type_error');
+  errorElement.classList.remove('popup__form-input-error_active');
+  errorElement.textContent = '';
 };
 
 /* проверяет валидность поля, внутри вызывает showInputError или hideInputError */
-const checkInputValidity = () => {
-  if (!formInput.validity.valid) {
-    showInputError(formInput, formInput.validationMessage);
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
   } else {
-    hideInputError(formInput);
+    hideInputError(formElement, inputElement);
   }
 };
 
-formElement.addEventListener('submit', function (evt) {
+/* Принимает параметром элемент формы и добавляет ее полям нужные обработчики */
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll('.popup__form-input'));
+
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener('input', () => {
+      checkInputValidity(formElement, inputElement);
+    })
+  })
+}
+
+setEventListeners(form);
+
+form.addEventListener('submit', function (evt) {
   evt.preventDefault();
 });
 
 formInput.addEventListener('input', function () {
-  checkInputValidity();
+  checkInputValidity(form, formInput);
 });
