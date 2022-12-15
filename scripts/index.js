@@ -81,12 +81,14 @@ const initialCards = [
 
 function openPopup(popup) { 
   popup.classList.add('popup_is-opened');
+  document.addEventListener('keydown', closePopupByClickOnEsc);
 }
 
 /* closePopup - функция закрытия попапа */
 
 function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', closePopupByClickOnEsc);
 }
 
 /* handleViewCard - функция открытия попапа с картинкой */
@@ -158,10 +160,10 @@ function disableSaveButton (buttonElement) {
 }
 
 /*  */
-function handleKeyDown(evt) {
+function closePopupByClickOnEsc(evt) {
   if (evt.key === 'Escape') {
-    const openPopup = document.querySelector('.popup_is-opened');
-    closePopup(openPopup);
+    const popup = document.querySelector('.popup_is-opened');
+    closePopup(popup);
   } 
 }
 
@@ -210,7 +212,7 @@ popupCloseButton.forEach((button) => {
 });
 
 /* закрытие попапов на Esc */
-document.addEventListener('keydown', handleKeyDown);
+
 
 /* обрабатываем событие отправки формы редактирования профиля*/
 popupProfileEditForm.addEventListener('submit', handleFormSubmitEditProfile);
