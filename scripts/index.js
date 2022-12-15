@@ -131,7 +131,7 @@ function createCard(dataCard) {
 
 /* renderCard - функция добавляет карточку в верстку */
 
-function renderCard (dataCard) {
+function renderCard(dataCard) {
   cardsContainer.prepend(createCard(dataCard));
 }
 
