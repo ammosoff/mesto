@@ -5,6 +5,8 @@ const cardsContainer = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#card-template').content;
 
 /* попапы */
+/* const popup = document.querySelectorAll('.popup');
+console.log(popup) */
 const popupProfileEdit = document.querySelector('.popup_type_edit-profile');
 const popupCardAdd = document.querySelector('.popup_type_add-card');
 const popupViewPicture = document.querySelector('.popup_type_view-picture');
@@ -155,6 +157,14 @@ function disableSaveButton (buttonElement) {
   buttonElement.disabled = true;
 }
 
+/*  */
+function handleKeyDown(evt) {
+  if (evt.key === 'Escape') {
+    const openPopup = document.querySelector('.popup_is-opened');
+    closePopup(openPopup);
+  } 
+}
+
 function handleFormSubmitCardAdd(evt) {
   evt.preventDefault();
 
@@ -198,6 +208,9 @@ popupCloseButton.forEach((button) => {
 
   button.addEventListener('click', () => closePopup(popup));   // устанавливаем обработчик закрытия на крестик
 });
+
+/* закрытие попапов на Esc */
+document.addEventListener('keydown', handleKeyDown);
 
 /* обрабатываем событие отправки формы редактирования профиля*/
 popupProfileEditForm.addEventListener('submit', handleFormSubmitEditProfile);
