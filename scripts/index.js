@@ -15,6 +15,7 @@ const popupCardAddOpenButton = document.querySelector('.profile__button-add');
 
 /* элемент закрытия попапов */
 const popupCloseButton = document.querySelectorAll('.popup__button-close');
+const popupSaveButton = document.querySelector('.popup__button-save_type_add-card');
 
 /* элементы форм */
 const popupProfileEditForm = document.forms["profile-form"];
@@ -149,6 +150,11 @@ function handleFormSubmitEditProfile(evt) {
 /* handleFormSubmitCardAdd - в этой функции получаем данные формы добавления новой карточки, передаем их функции добавления карточки 
 и закрываем попап. В конце очищаем поля формы чтобы они не отображались при следующем открытии формы */
 
+function disableSaveButton (buttonElement) {
+  buttonElement.classList.add('popup__button-save_disabled');
+  buttonElement.disabled = true;
+}
+
 function handleFormSubmitCardAdd(evt) {
   evt.preventDefault();
 
@@ -159,6 +165,7 @@ function handleFormSubmitCardAdd(evt) {
   closePopup(popupCardAdd);
 
   evt.target.reset(); // очищаем форму
+  disableSaveButton(popupSaveButton); // делаем неактивной кнопку Сохранить для предотвращения добавления пустой карточки после повторного открытия формы
 }
 
 /* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
