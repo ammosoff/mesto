@@ -5,6 +5,7 @@ const cardsContainer = document.querySelector('.cards');
 const cardTemplate = cardsContainer.querySelector('#card-template').content;
 
 /* попапы */
+const popupList = document.querySelectorAll('.popup');
 const popupProfileEdit = document.querySelector('.popup_type_edit-profile');
 const popupCardAdd = document.querySelector('.popup_type_add-card');
 const popupViewPicture = document.querySelector('.popup_type_view-picture');
@@ -76,7 +77,6 @@ const initialCards = [
 const openPopup = (popup) => { 
   popup.classList.add('popup_is-opened');
   document.addEventListener('keydown', handleClosePopupByEsc);
-  popup.addEventListener('mousedown', handleClosePopupByOverlay);
 }
 
 /* closePopup - функция закрытия попапа */
@@ -153,7 +153,7 @@ const handleClosePopupByEsc = (evt) => {
   } 
 }
 
-/* Закрытие попапа кликом на оверлей */
+/* Закрытие попапа нажатием кнопки мыши на оверлей */
 const handleClosePopupByOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.target);
@@ -203,6 +203,11 @@ popupCloseButtonList.forEach((button) => {
 
   button.addEventListener('click', () => closePopup(popup));   // устанавливаем обработчик закрытия на крестик
 });
+
+/* на каждый попап вешаем случашатель чтобы закрывать попап нажатием кнопки мыши на оверлей */
+popupList.forEach((popup) => {
+  popup.addEventListener('mousedown', handleClosePopupByOverlay);
+})
 
 /* обрабатываем событие отправки формы редактирования профиля*/
 popupProfileEditForm.addEventListener('submit', handleFormSubmitEditProfile);
