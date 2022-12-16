@@ -204,7 +204,7 @@ popupCloseButtonList.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));   // устанавливаем обработчик закрытия на крестик
 });
 
-/* на каждый попап вешаем случашатель чтобы закрывать попап нажатием кнопки мыши на оверлей */
+/* на каждый попап вешаем слушатель чтобы закрывать попап нажатием кнопки мыши на оверлей */
 popupList.forEach((popup) => {
   popup.addEventListener('mousedown', handleClosePopupByOverlay);
 })
