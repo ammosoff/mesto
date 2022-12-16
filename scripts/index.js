@@ -82,6 +82,7 @@ const openPopup = (popup) => {
 /* closePopup - функция закрытия попапа */
 const closePopup = (popup) => {
   popup.classList.remove('popup_is-opened');
+  document.removeEventListener('keydown', handleClosePopupByEsc);
 }
 
 /* handleViewCard - функция открытия попапа с картинкой */
