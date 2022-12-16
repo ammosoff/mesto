@@ -15,7 +15,6 @@ const popupCardAddButton = document.querySelector('.profile__button-add');
 
 /* элемент закрытия попапов */
 const popupCloseButton = document.querySelectorAll('.popup__button-close');
-const popupSaveButton = document.querySelector('.popup__button-save_type_add-card');
 
 /* элементы форм */
 const popupProfileEditForm = document.forms["profile-form"];
@@ -139,8 +138,8 @@ const handleFormSubmitEditProfile = (evt) => {
   closePopup(popupProfileEdit);
 }
 
-/* отключение кнопки сабмита формы */
-const disableSaveButton = (buttonElement) => {
+/* отключение кнопки отправки формы */
+const disableButtonSubmitForm = (buttonElement) => {
   buttonElement.classList.add('popup__button-save_disabled');
   buttonElement.disabled = true;
 }
@@ -172,7 +171,7 @@ const handleFormSubmitCardAdd = (evt) => {
   closePopup(popupCardAdd);
 
   evt.target.reset(); // очищаем форму
-  disableSaveButton(popupSaveButton); // делаем неактивной кнопку Сохранить для предотвращения добавления пустой карточки после повторного открытия формы
+  disableButtonSubmitForm(evt.submitter); // делаем неактивной кнопку сабмита формы для предотвращения добавления пустой карточки после повторного открытия формы
 }
 
 /* проходим по каждому элементу массива initialCards и передаем его в функцию  renderCard */
