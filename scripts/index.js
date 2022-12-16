@@ -13,8 +13,8 @@ const popupViewPicture = document.querySelector('.popup_type_view-picture');
 const popupProfileEditButton = document.querySelector('.profile__button-edit');
 const popupCardAddButton = document.querySelector('.profile__button-add');
 
-/* элемент закрытия попапов */
-const popupCloseButton = document.querySelectorAll('.popup__button-close');
+/* элементы кнопок закрытия попапов  */
+const popupCloseButtonList = document.querySelectorAll('.popup__button-close');
 
 /* элементы форм */
 const popupProfileEditForm = document.forms["profile-form"];
@@ -198,7 +198,7 @@ popupCardAddButton.addEventListener('click', () => {
   });
   
 /* закрытие попапов на крестик */
-popupCloseButton.forEach((button) => {
+popupCloseButtonList.forEach((button) => {
   const popup = button.closest('.popup');   // находим 1 раз ближайший к крестику попап 
 
   button.addEventListener('click', () => closePopup(popup));   // устанавливаем обработчик закрытия на крестик
