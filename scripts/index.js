@@ -155,8 +155,7 @@ const handleClosePopupByEsc = (evt) => {
 /* Закрытие попапа кликом на оверлей */
 const handleClosePopupByOverlay = (evt) => {
   if (evt.target === evt.currentTarget) {
-    const popup = document.querySelector('.popup_is-opened');
-    closePopup(popup);
+    closePopup(evt.target);
   } 
 }
 
