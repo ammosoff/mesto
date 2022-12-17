@@ -40,7 +40,7 @@ const setEventListeners = (config, formElement) => {
 
 /* Находим все формы в DOM и вызываем для них функцию setEventListeners чтобы навесить обработчики инпутам */
 const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  const formList = document.querySelectorAll(config.formSelector);
 
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
