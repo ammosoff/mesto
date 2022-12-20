@@ -14,9 +14,6 @@ const popupViewPicture = document.querySelector('.popup_type_view-picture');
 const popupProfileEditButton = document.querySelector('.profile__button-edit');
 const popupCardAddButton = document.querySelector('.profile__button-add');
 
-/* элементы кнопок закрытия попапов  */
-const popupCloseButtonList = document.querySelectorAll('.popup__button-close');
-
 /* элементы форм */
 const popupProfileEditForm = document.forms["profile-form"];
 const popupCardAddForm = document.forms["card-form"];
@@ -153,13 +150,6 @@ const handleClosePopupByEsc = (evt) => {
   } 
 }
 
-/* Закрытие попапа нажатием кнопки мыши на оверлей */
-const handleClosePopupByOverlay = (evt) => {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.target);
-  } 
-}
-
 /* обработчик сабмита формы добавления новой карточки */
 const handleFormSubmitCardAdd = (evt) => {
   evt.preventDefault();
@@ -195,19 +185,19 @@ popupProfileEditButton.addEventListener('click', () => {
 /* при клике на кнопку добавления новой карточки вызываем функцию открытия попапа */
 popupCardAddButton.addEventListener('click', () => {
     openPopup(popupCardAdd);
-  });
-  
-/* закрытие попапов на крестик */
-popupCloseButtonList.forEach((button) => {
-  const popup = button.closest('.popup');   // находим 1 раз ближайший к крестику попап 
-
-  button.addEventListener('click', () => closePopup(popup));   // устанавливаем обработчик закрытия на крестик
 });
-
-/* на каждый попап вешаем слушатель чтобы закрывать попап нажатием кнопки мыши на оверлей */
+  
+/* закрытие попапа на крестик или оверлей */
 popupList.forEach((popup) => {
-  popup.addEventListener('mousedown', handleClosePopupByOverlay);
-})
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_is-opened')) {
+        closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__button-close')) {
+        closePopup(popup)
+      }
+  });
+});
 
 /* обрабатываем событие отправки формы редактирования профиля*/
 popupProfileEditForm.addEventListener('submit', handleFormSubmitEditProfile);
